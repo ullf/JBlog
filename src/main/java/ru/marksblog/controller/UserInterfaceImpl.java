@@ -1,6 +1,7 @@
 package ru.marksblog.controller;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.marksblog.entity.User;
@@ -13,12 +14,9 @@ public class UserInterfaceImpl extends VerticalLayout implements UserInterface{
     private UserService userService;
 
     @Override
-    public void loginUser(String username, String password) {
+    public String loginUser(String username, String password) {
         String user=userService.loginUser(username,password);
-        if (user.equals("fail")) {
-            getUI().ifPresent(ui -> ui.navigate("fail"));
-        }
-        getUI().ifPresent(ui -> ui.navigate("menu"));
+        return user;
     }
 
     @Override

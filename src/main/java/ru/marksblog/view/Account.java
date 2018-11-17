@@ -8,13 +8,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.marksblog.controller.UserInterface;
 import ru.marksblog.service.UserService;
 
 @Route("account")
 public class Account extends VerticalLayout{
 
     @Autowired
-    private UserService userService;
+    private UserInterface userInterface;
 
     public Account(){
         Label label = new Label("Delete user");
@@ -23,7 +24,7 @@ public class Account extends VerticalLayout{
         button.addClickListener(new ComponentEventListener<ClickEvent<Button>>() {
             @Override
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
-                userService.deleteByUsername(fieldUsername.getValue());
+                userInterface.deleteUser(fieldUsername.getValue());
             }
         });
         add(label);

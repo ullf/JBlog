@@ -7,12 +7,14 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.marksblog.controller.UserInterfaceImpl;
 import ru.marksblog.service.UserService;
 
 @Route("login")
+@PageTitle("Login")
 public class Login extends VerticalLayout{
 
     @Autowired
@@ -35,7 +37,12 @@ public class Login extends VerticalLayout{
             public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
                 String username = fieldUsername.getValue();
                 String password = filedPassword.getValue();
-                userInterface.loginUser(username,password);
+                String user = userInterface.loginUser(username,password);
+                if (user.equals("fail")) {
+                    getUI().get().navigate("fail");
+                } else {
+                    getUI().get().navigate("account");
+                }
             }
         });
         add(label);

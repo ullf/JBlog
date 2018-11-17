@@ -7,20 +7,17 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.marksblog.controller.UserInterfaceImpl;
-import ru.marksblog.entity.User;
-import ru.marksblog.service.UserService;
 
 @Route("")
+@PageTitle("Main page")
 public class Index extends VerticalLayout{
 
     @Autowired
     private UserInterfaceImpl userInterface;
-
-    @Autowired
-    private UserService userService;
 
     public Index() {
         super(new Menu());
