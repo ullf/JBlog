@@ -9,31 +9,35 @@ import ru.marksblog.repository.UserRepositry;
 public class UserService {
 
     @Autowired
-    UserRepositry userRepositry;
-
-    private UserRepositry getUserRepositry() {
-        return userRepositry;
-    }
+    private UserRepositry userRepositry;
 
     public void persist(User user){
         if (user != null){
-            getUserRepositry().save(user);
+            userRepositry.save(user);
         }
     }
 
     public void deleteByUsername(String username){
-        getUserRepositry().deleteByUsername(username);
+        userRepositry.deleteByUsername(username);
     }
 
     public String loginUser(String username,String password){
-        User user=getUserRepositry().loginUser(username,password);
+        User user = userRepositry.loginUser(username,password);
         if (user == null) {
             return "fail";
         }
         if(user != null) {
             user.setLogin(true);
-            getUserRepositry().setLogin(username,password);
+            userRepositry.setLogin(username,password);
         }
         return "ok";
+    }
+
+    public User findUserByUsername(String username){
+        User user = userRepositry.findUserByUsername(username);
+        if(user == null) {
+            return null;
+        }
+        return user;
     }
 }

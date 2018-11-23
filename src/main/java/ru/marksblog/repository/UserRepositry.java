@@ -22,4 +22,7 @@ public interface UserRepositry extends CrudRepository<User,Long> {
     @Query("UPDATE User user SET user.isLogin=true WHERE user.username=:username and user.password=:password")
     @Modifying
     void setLogin(@Param("username") String username,@Param("password") String password);
+
+    @Query("SELECT user FROM User user WHERE user.username=:username")
+    User findUserByUsername(@Param("username") String username);
 }
