@@ -5,6 +5,7 @@ import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.marksblog.controller.PostInterfaceImpl;
@@ -25,7 +26,8 @@ public class Blog extends VerticalLayout{
                 public void onComponentEvent(ClickEvent<Button> buttonClickEvent) {
                     Iterator<Post> iter = postInterface.findAll();
                     while(iter.hasNext()){
-                        TextArea areaPost = new TextArea();
+                        TextField areaPost = new TextField();
+                        areaPost.setWidth("500px");
                         areaPost.setValue(iter.next().getPost());
                         add(areaPost);
                     }

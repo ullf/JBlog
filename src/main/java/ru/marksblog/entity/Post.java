@@ -19,10 +19,10 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    //@Nullable
+    @Nullable
     private String owner;
-    //@Nullable
+    @Nullable
     private String title;
-    //@Nullable
+    @Nullable
     private String post;
 }
