@@ -9,20 +9,20 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jblog_users")
+@Table(name = "jblog_posts")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Nullable
-    private String username;
+    private String owner;
     @Nullable
-    private String password;
+    private String title;
     @Nullable
-    private boolean isLogin;
+    private String post;
 }

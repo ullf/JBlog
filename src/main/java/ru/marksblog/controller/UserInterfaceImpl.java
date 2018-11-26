@@ -31,4 +31,17 @@ public class UserInterfaceImpl extends VerticalLayout implements UserInterface{
         user.setPassword(password);
         userService.persist(user);
     }
+
+    @Override
+    public User findUserByUsername(String username) {
+        User user = userService.findUserByUsername(username);
+        return user;
+    }
+
+    @Override
+    public void logoutUser(String username) {
+        User user = userService.findUserByUsername(username);
+        user.setLogin(false);
+        userService.persist(user);
+    }
 }
