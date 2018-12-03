@@ -12,6 +12,8 @@ public class Menu extends VerticalLayout{
         Div menu = new Div();
         menu.add(new RouterLink("Index ", Index.class));
         menu.add(new RouterLink("Login ", Login.class));
+        menu.add(new RouterLink("Blog ",Blog.class));
+        menu.add(new RouterLink("Account ",Account.class));
         add(menu);
     }
 

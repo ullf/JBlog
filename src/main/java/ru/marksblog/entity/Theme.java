@@ -9,22 +9,16 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "jblog_posts")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "jblog_themes")
 @Getter
 @Setter
-public class Post {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Theme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Nullable
-    private String owner;
-    @Nullable
-    private String title;
-    @Nullable
-    private String post;
     @Nullable
     private String themename;
 }
