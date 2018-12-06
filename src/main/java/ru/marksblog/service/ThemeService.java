@@ -2,6 +2,7 @@ package ru.marksblog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.marksblog.entity.Post;
 import ru.marksblog.entity.Theme;
 import ru.marksblog.repository.ThemeRepository;
 
@@ -20,5 +21,9 @@ public class ThemeService {
 
     public Iterator<Theme> findAll(){
         return themeRepository.findAll().iterator();
+    }
+
+    public void persist(Theme theme){
+        themeRepository.save(theme);
     }
 }
